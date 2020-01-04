@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Players from '../components/Players/Players'
 import { resetPlayers } from '../stores/actions/battleActions'
 import { connect } from 'react-redux'
+import Instructions from '../components/Instructions/Instructions'
 
 class Battle extends Component {
   componentWillUnmount () {
@@ -29,8 +30,8 @@ class Battle extends Component {
       <>
         <Players />
         {submitBtn}
+        <Instructions />
       </>
-
     )
   }
 }
@@ -39,8 +40,6 @@ const mapStateToProps = state => ({
   players: state.battle.players
 })
 
-const mapDispatchToProps = {
-  resetPlayers
-}
+const mapDispatchToProps = { resetPlayers }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Battle)

@@ -38,8 +38,8 @@ a:hover {
   font-size: 30px;
 }
 
-.theme-btn:focus {
-  outline: 0;
+*:focus {
+  outline: 0 !important;
 }
 
 .card.custom a.card-title {

@@ -1,0 +1,19 @@
+.resultCard {
+    border: 1px solid #d35400;
+    padding: 20px 5px;
+}
+
+.listDetails {
+    list-style: none;
+    padding-left: 30px;
+    text-align: left;
+}
+
+.listDetails > li {
+    font-size: 18px;
+
+}
+
+.listDetails > li:not(:last-child) {
+    margin-bottom: 8px;
+}

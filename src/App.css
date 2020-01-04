@@ -1,38 +1,65 @@
-.App {
-  text-align: center;
+[data-theme="dark"] {
+  color: #eee;
+  background-color: #272727;
+}
+[data-theme="dark"] nav.custom-nav > ul > li > a { 
+  color: #eee;
+}
+[data-theme="dark"] nav.custom-nav > ul > li > button {
+  color: #eee; 
+}
+[data-theme="dark"] .card {
+  background-color: #272727;
+  border-color: #eee;
+}
+[data-theme="dark"] .list-group-item {
+  background-color: #272727;
+  border-color: #eee;
+}
+[data-theme="dark"] .btn-outline-dark {
+  color: #eee;
+  border-color: #eee;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+a{
+  color: #d35400;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+a:hover {
+  text-decoration: none;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.btn-clear {
+  background: transparent;
+  border: 0;
 }
 
-.App-link {
-  color: #61dafb;
+.theme-btn {
+  font-size: 30px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.theme-btn:focus {
+  outline: 0;
+}
+
+.card.custom a.card-title {
+  font-size: 20px;
+}
+
+.form-control:focus, .btn:focus {
+  box-shadow: none;
+}
+
+nav.custom-nav > ul > li:not(:last-child) {
+  margin-right: 15px;
+}
+
+nav.custom-nav > ul > li > a, button {
+  color: #34495e;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+nav.custom-nav > ul > li > a.nav-active, button.nav-active {
+  color: #d35400;
 }

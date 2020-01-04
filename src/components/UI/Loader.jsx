@@ -6,7 +6,7 @@ const Loader = props => {
     useEffect(() => {
         const intervalId = setInterval(() => updateLoader(), 200)
 
-        // Component will UnMound
+        // Component will UnMount
         return () => {
             clearInterval(intervalId)
         }
@@ -22,7 +22,7 @@ const Loader = props => {
 
     const dots = Array(loading + 1).join('.')
 
-    return <h1 className='font-weight-light'>{props.text}{dots}</h1>
+    return <h2 className='font-weight-light'>{props.text}{dots}</h2>
 }
 
 export default Loader

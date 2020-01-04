@@ -20,6 +20,9 @@
   color: #eee;
   border-color: #eee;
 }
+[data-theme="dark"] .instruction-icon {
+  background-color: #363636;
+}
 
 a{
   color: #d35400;
@@ -62,4 +65,9 @@ nav.custom-nav > ul > li > a, button {
 
 nav.custom-nav > ul > li > a.nav-active, button.nav-active {
   color: #d35400;
+}
+
+.instruction-icon {
+  background-color: #e3e3e3;
+  padding: 30px 10px;
 }

@@ -5,6 +5,11 @@ import { connect } from 'react-redux'
 import Instructions from '../components/Instructions/Instructions'
 
 class Battle extends Component {
+
+  componentDidMount () {
+    document.title = this.props.title
+  }
+
   componentWillUnmount () {
     this.props.resetPlayers()
   }

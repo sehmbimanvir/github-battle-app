@@ -7,6 +7,7 @@ import Loader from '../components/UI/Loader'
 
 class Popular extends Component {
   componentDidMount () {
+    document.title = this.props.title
     this.props.onLoadRepos()
   }
 

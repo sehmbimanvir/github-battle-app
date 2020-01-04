@@ -5,13 +5,22 @@ import Battle from '../containers/Battle'
 import Result from '../containers/Result'
 import NotFound from '../components/Errors/NotFound'
 
+const appName = 'Github Battle App'
+
 const Routes = () => (
     <Switch>
-        <Route path="/" exact component={Popular} />
-        <Route path="/battle" exact component={Battle} />
-        <Route path="/battle/results" component={Result} />
+        <RouteWithTitle path="/" title="Popular Repositories" exact component={Popular} />
+        <RouteWithTitle path="/battle" title="Start Battle" exact component={Battle} />
+        <RouteWithTitle path="/battle/results" title="Battle Results" component={Result} />
         <Route component={NotFound} />
     </Switch>
 )
+
+const RouteWithTitle = ({ component: Component, title, ...rest }) => {
+    title = title ? `${appName} - ${title}` : appName;
+    return (
+        <Route {...rest} render={props => <Component {...props} title={title} />} />
+    )
+}
 
 export default Routes

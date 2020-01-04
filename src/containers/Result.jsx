@@ -14,6 +14,7 @@ class Result extends Component {
   }
 
   componentDidMount () {
+    document.title = this.props.title
     const urlParams = queryString.parse(this.props.location.search)
     this.setPlayerDetails(urlParams.playerOne)
     this.setPlayerDetails(urlParams.playerTwo)

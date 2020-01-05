@@ -19,25 +19,25 @@ class Player extends React.Component {
 
   onSubmitName = e => {
     e.preventDefault()
-
     const image = `https://github.com/${this.state.name}.png?size=200`
+    if (this.props.players.length === 1 && this.props.players[0].name === this.state.name) {
+      this.setState({ error: 'Both Users cannot be same, Please try different one.' })
+      return
+    }
 
-    getUser(this.state.name).then(response => {
+    getUser(this.state.name).then(() => {
       this.setState({
-        submitted: true,
-        image,
-        error: false
+        submitted: true, image, error: false
       })
+
       this.props.onNameSave({ name: this.state.name })
-    }, error => {
+    }, () => {
       this.setState({ error: 'User Not Found' })
     })
   }
 
   handleInputChange = e => {
-    this.setState({
-      name: e.target.value
-    })
+    this.setState({ name: e.target.value })
   }
 
   onPlayerClose = () => {
@@ -45,8 +45,8 @@ class Player extends React.Component {
     this.setState({ submitted: false, name: '', error: false })
   }
 
-  render () {
-    const result = !this.state.submitted ? (
+  getInputForm = () => {
+    return (
       <form className="player" onSubmit={this.onSubmitName}>
         <label className={classes.playerLabel}>{this.props.title}</label>
         <div className="input-group mb-3">
@@ -57,28 +57,38 @@ class Player extends React.Component {
         </div>
         {this.state.error && <span className="text-danger">{this.state.error}</span>}
       </form>
-    ) : (
-        <div className="player">
-          <h4 className={classes.playerLabel}>{this.props.title}</h4>
-          <div className={`row m-0 ` + classes.boxBgLight}>
-            <div className={classes.playerInfo}>
-              <img width="50px" className="mr-4" src={this.state.image} alt="User" />
-              <a rel="noopener noreferrer" target="_blank" href={`https://github.com/${this.state.name}`}>{this.state.name}</a>
-            </div>
-            <button className="pull-right" onClick={this.onPlayerClose}>
-              <TimesCircle width="30px" fill='#d35400' />
-            </button>
-          </div>
-        </div>
-      )
+    )
+  }
 
-    return result
+  getPlayer = () => {
+    return (
+      <div className="player">
+        <h4 className={classes.playerLabel}>{this.props.title}</h4>
+        <div className={`row m-0 ` + classes.boxBgLight}>
+          <div className={classes.playerInfo}>
+            <img width="50px" className="mr-4" src={this.state.image} alt="User" />
+            <a rel="noopener noreferrer" target="_blank" href={`https://github.com/${this.state.name}`}>{this.state.name}</a>
+          </div>
+          <button className="pull-right" onClick={this.onPlayerClose}>
+            <TimesCircle width="30px" fill='#d35400' />
+          </button>
+        </div>
+      </div>
+    )
+  }
+
+  render () {
+    return !this.state.submitted ? this.getInputForm() : this.getPlayer()
   }
 }
 
+const mapStateToProps = state => ({
+  players: state.battle.players
+})
+
 const mapDispatchToProps = {
-  onNameSave: (data) => addPlayer(data),
-  onNameDelete: (name) => removePlayer(name)
+  onNameSave: data => addPlayer(data),
+  onNameDelete: name => removePlayer(name)
 }
 
-export default connect(null, mapDispatchToProps)(Player)
+export default connect(mapStateToProps, mapDispatchToProps)(Player)

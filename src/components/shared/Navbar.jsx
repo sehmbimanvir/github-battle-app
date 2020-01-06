@@ -10,7 +10,7 @@ const Navbar = (props) => {
 
   return (
     <>
-      <nav className="custom-nav text-center d-none d-md-block d-lg-none">
+      <nav className="custom-nav text-center d-none d-md-block d-lg-block">
         <ul className="list-inline">
           {
             Languages.map((item, index) => {
@@ -23,7 +23,7 @@ const Navbar = (props) => {
           }
         </ul>
       </nav>
-      <div className="form-group language-selector d-block d-sm-block d-md-none mt-4">
+      <div className="form-group language-selector d-block d-sm-block d-md-none d-lg-none mt-4">
         <select onChange={onChangeSelect} className="form-control">
           {
             Languages.map((item, index) => {

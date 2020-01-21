@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Navbar from '../components/shared/Navbar'
+import Navbar from '../shared/Navbar'
 import GithubRepoList from '../components/RepoList/RepoList'
 import { connect } from 'react-redux'
 import { loadRepositories, unsetRepositories } from '../stores/actions/popularReporsActions'

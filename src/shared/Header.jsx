@@ -1,6 +1,6 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-import GithubStarButton from '../UI/GithubStarButton'
+import GithubStarButton from '../components/UI/GithubStarButton'
 
 const Header = (props) => {
   const icon = props.theme === 'light' ? '🔦' : '💡'

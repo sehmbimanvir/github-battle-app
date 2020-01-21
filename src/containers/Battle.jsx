@@ -34,7 +34,6 @@ class Battle extends Component {
     return (
       <>
         <Instructions />
-
         <Players />
         {submitBtn}
       </>

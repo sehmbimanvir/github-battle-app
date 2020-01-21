@@ -2,10 +2,10 @@ import React from 'react'
 
 const Languages = ['All', 'JavaScript', 'Ruby', 'Java', 'CSS', 'Python']
 
-const Navbar = (props) => {
+const Navbar = ({ language, onChangeCategory }) => {
 
   const onChangeSelect = (e) => {
-    props.onChange(e.target.value)
+    onChangeCategory(e.target.value)
   }
 
   return (
@@ -16,7 +16,7 @@ const Navbar = (props) => {
             Languages.map((item, index) => {
               return (
                 <li className='list-inline-item' key={index}>
-                  <button className={`btn-clear ${props.language === item ? 'nav-active' : ''}`} onClick={() => props.onChange(item)}>{item}</button>
+                  <button className={`btn-clear ${language === item ? 'nav-active' : ''}`} onClick={() => onChangeCategory(item)}>{item}</button>
                 </li>
               )
             })

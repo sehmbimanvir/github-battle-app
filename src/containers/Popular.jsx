@@ -22,7 +22,7 @@ class Popular extends Component {
   render () {
     return (
       <>
-        <Navbar language={this.props.language} onChange={this.onChangeCategory} />
+        <Navbar language={this.props.language} onChangeCategory={this.onChangeCategory} />
         {!this.props.loading ? <GithubRepoList repos={this.props.items} /> : <div className="mt-5 text-center"><Loader text="Fetching Repositories" /></div>}
       </>
     )

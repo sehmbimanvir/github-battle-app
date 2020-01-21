@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
-const Loader = props => {
+const Loader = ({ text }) => {
     const [loading, setLoading] = useState(0)
 
     useEffect(() => {
@@ -22,7 +22,7 @@ const Loader = props => {
 
     const dots = Array(loading + 1).join('.')
 
-    return <h2 className='font-weight-light'>{props.text}{dots}</h2>
+    return <h2 className='font-weight-light'>{text}{dots}</h2>
 }
 
 export default Loader

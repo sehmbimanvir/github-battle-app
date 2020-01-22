@@ -1,32 +1,29 @@
-import React, { Component } from 'react'
+import React, { useEffect } from 'react'
 import Navbar from '../shared/Navbar'
 import GithubRepoList from '../components/RepoList/RepoList'
 import { connect } from 'react-redux'
 import { loadRepositories, unsetRepositories } from '../stores/actions/popularReporsActions'
 import Loader from '../components/UI/Loader'
 
-class Popular extends Component {
-  componentDidMount () {
-    document.title = this.props.title
-    this.props.onLoadRepos()
+const Popular = ({ items, loading, language, onLoadRepos, unsetRepositories }) => {
+
+  const onChangeCategory = category => {
+    onLoadRepos(category)
   }
 
-  onChangeCategory = category => {
-    this.props.onLoadRepos(category)
-  }
+  useEffect(() => {
+    onLoadRepos()
+    return () => {
+      unsetRepositories()
+    }
+  }, [onLoadRepos, unsetRepositories])
 
-  componentWillUnmount () {
-    this.props.unsetRepositories()
-  }
-
-  render () {
-    return (
-      <>
-        <Navbar language={this.props.language} onChangeCategory={this.onChangeCategory} />
-        {!this.props.loading ? <GithubRepoList repos={this.props.items} /> : <div className="mt-5 text-center"><Loader text="Fetching Repositories" /></div>}
-      </>
-    )
-  }
+  return (
+    <>
+      <Navbar language={language} onChangeCategory={onChangeCategory} />
+      {!loading ? <GithubRepoList repos={items} /> : <div className="mt-5 text-center"><Loader text="Fetching Repositories" /></div>}
+    </>
+  )
 }
 
 const mapStateToProps = state => ({

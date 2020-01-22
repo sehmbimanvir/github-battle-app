@@ -1,44 +1,40 @@
-import React, { Component } from 'react'
+import React, { useEffect } from 'react'
 import Players from '../components/Players/Players'
 import { resetPlayers } from '../stores/actions/battleActions'
 import { connect } from 'react-redux'
 import Instructions from '../components/Instructions/Instructions'
 
-class Battle extends Component {
+const Battle = ({ players, resetPlayers, history }) => {
 
-  componentDidMount () {
-    document.title = this.props.title
-  }
+  useEffect(() => {
+    return () => {
+      resetPlayers()
+    }
+  }, [resetPlayers])
 
-  componentWillUnmount () {
-    this.props.resetPlayers()
-  }
-
-  onStartBattle = () => {
-    const players = this.props.players
+  const onStartBattle = () => {
     const search = `?playerOne=${players[0].name}&playerTwo=${players[1].name}`
-    this.props.history.push({
-      pathname: '/battle/results',
-      search
+    history.push({
+      pathname: '/battle/results', search
     })
   }
 
-  render () {
-    const submitBtn = this.props.players.length === 2 && (
-      <div className="row mt-5">
-        <div className="col-12 col-md-2 offset-md-5">
-          <button onClick={this.onStartBattle} className="btn btn-block btn-dark">Battle</button>
-        </div>
+  const submitBtn = players.length ? (
+    <div className="row mt-5">
+      <div className="col-12 col-md-2 offset-md-5">
+        <button onClick={onStartBattle} className="btn btn-block btn-dark">Battle</button>
       </div>
-    )
-    return (
-      <>
-        <Instructions />
-        <Players />
-        {submitBtn}
-      </>
-    )
-  }
+    </div>
+  ) : null
+
+  return (
+    <>
+      <Instructions />
+      <Players />
+      {submitBtn}
+    </>
+  )
+
 }
 
 const mapStateToProps = state => ({

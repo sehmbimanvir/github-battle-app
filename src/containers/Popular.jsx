@@ -5,18 +5,19 @@ import { connect } from 'react-redux'
 import { loadRepositories, unsetRepositories } from '../stores/actions/popularReporsActions'
 import Loader from '../components/UI/Loader'
 
-const Popular = ({ items, loading, language, onLoadRepos, unsetRepositories }) => {
-
-  const onChangeCategory = category => {
-    onLoadRepos(category)
-  }
+const Popular = ({ items, loading, language, onLoadRepos, unsetRepositories, title }) => {
 
   useEffect(() => {
+    document.title = title
     onLoadRepos()
     return () => {
       unsetRepositories()
     }
-  }, [onLoadRepos, unsetRepositories])
+  }, [])
+
+  const onChangeCategory = category => {
+    onLoadRepos(category)
+  }
 
   return (
     <>

@@ -4,8 +4,14 @@ import { getUser } from '../services/Github'
 import ResultCard from '../components/ResultCard'
 import Loader from '../components/UI/Loader'
 
-const Result = ({ location, history }) => {
+const Result = ({ location, history, title }) => {
   const [players, updatePlayers] = useState([])
+
+  useEffect(() => {
+    document.title = title
+    const urlParams = queryString.parse(location.search)
+    setPlayerDetails(urlParams)
+  }, [])
 
   const setPlayerDetails = ({ playerOne: user1, playerTwo: user2 }) => {
     Promise.all([getUser(user1), getUser(user2)]).then(response => {
@@ -43,11 +49,6 @@ const Result = ({ location, history }) => {
       </div>
     </div>
   )
-
-  useEffect(() => {
-    const urlParams = queryString.parse(location.search)
-    setPlayerDetails(urlParams)
-  }, [])
 
   if (players.length === 2) {
     let [player1, player2] = players

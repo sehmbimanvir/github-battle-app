@@ -4,13 +4,14 @@ import { resetPlayers } from '../stores/actions/battleActions'
 import { connect } from 'react-redux'
 import Instructions from '../components/Instructions'
 
-const Battle = ({ players, resetPlayers, history }) => {
+const Battle = ({ players, resetPlayers, history, title }) => {
 
   useEffect(() => {
+    document.title = title
     return () => {
       resetPlayers()
     }
-  }, [resetPlayers])
+  }, [])
 
   const onStartBattle = () => {
     const search = `?playerOne=${players[0].name}&playerTwo=${players[1].name}`

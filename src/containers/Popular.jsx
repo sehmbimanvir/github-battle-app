@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import Navbar from '../shared/Navbar'
-import GithubRepoList from '../components/RepoList/RepoList'
+import GithubRepoList from '../components/RepoList'
 import { connect } from 'react-redux'
 import { loadRepositories, unsetRepositories } from '../stores/actions/popularReporsActions'
 import Loader from '../components/UI/Loader'

@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react'
-import Players from '../components/Players/Players'
+import Players from '../components/Players'
 import { resetPlayers } from '../stores/actions/battleActions'
 import { connect } from 'react-redux'
-import Instructions from '../components/Instructions/Instructions'
+import Instructions from '../components/Instructions'
 
 const Battle = ({ players, resetPlayers, history }) => {
 

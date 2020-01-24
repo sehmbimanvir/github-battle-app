@@ -1,5 +1,5 @@
 import React from 'react'
-import InstructionCard from './InstructionCard/InstructionCard'
+import InstructionCard from './InstructionCard'
 import { ReactComponent as UserFriendsIcon } from '../UI/Icons/userFriends.svg'
 import { ReactComponent as FighterJetIcon } from '../UI/Icons/fighterJet.svg'
 import { ReactComponent as AwardIcon } from '../UI/Icons/award.svg'

@@ -1,5 +1,5 @@
 import React from 'react'
-import Repo from './Repo/Repo'
+import Repo from './Repo'
 
 const RepoList = ({ repos }) => {
     const result = repos.map((item, key) => <Repo key={item.id} rank={key + 1} item={item} />)

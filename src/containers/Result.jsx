@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import queryString from 'query-string'
 import { getUser } from '../services/Github'
-import ResultCard from '../components/ResultCard/ResultCard'
+import ResultCard from '../components/ResultCard'
 import Loader from '../components/UI/Loader'
 
 const Result = ({ location, history }) => {
